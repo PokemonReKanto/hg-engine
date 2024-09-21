@@ -76,7 +76,7 @@ INCLUDE_SUBDIR = include
 BUILD := build
 BUILD_NARC := $(BUILD)/narc
 BASE := base
-FILESYS := $(BASE)/root
+FILESYS := $(BASE)/data
 
 LINK = $(BUILD)/linked.o
 OUTPUT = $(BUILD)/output.bin
@@ -204,7 +204,7 @@ all: $(TOOLS) $(OUTPUT) $(OVERLAY_OUTPUTS)
 	mkdir -p $(BUILD)/move/move_anim $(BUILD)/move/move_sub_anim $(BUILD)/move/move_anim $(BUILD)/pw_pokegra $(BUILD)/pw_pokeicon $(BUILD)/pw_pokegra_int $(BUILD)/pw_pokeicon_int
 	###The line below is because of junk files that macOS can create which will interrupt the build process###
 	find . -name '*.DS_Store' -execdir rm -f {} \;
-	$(NDSTOOL) -x $(ROMNAME) -9 $(BASE)/arm9.bin -7 $(BASE)/arm7.bin -y9 $(BASE)/overarm9.bin -y7 $(BASE)/overarm7.bin -d $(FILESYS) -y $(BASE)/overlay -t $(BASE)/banner.bin -h $(BASE)/header.bin
+	$(NDSTOOL) -x $(ROMNAME) -9 $(BASE)/arm9.bin -7 $(BASE)/arm7.bin -y9 $(BASE)/y9.bin -y7 $(BASE)/y7.bin -d $(FILESYS) -y $(BASE)/overlay -t $(BASE)/banner.bin -h $(BASE)/header.bin
 	@echo "$(ROMNAME) Decompression successful!!"
 	$(NARCHIVE) extract $(FILESYS)/a/0/2/8 -o $(BUILD)/a028/ -nf
 	$(PYTHON) scripts/make.py
@@ -212,7 +212,7 @@ all: $(TOOLS) $(OUTPUT) $(OVERLAY_OUTPUTS)
 	$(ARMIPS) armips/global.s
 	$(NARCHIVE) create $(FILESYS)/a/0/2/8 $(BUILD)/a028/ -nf
 	@echo "Making ROM..."
-	$(NDSTOOL) -c $(BUILDROM) -9 $(BASE)/arm9.bin -7 $(BASE)/arm7.bin -y9 $(BASE)/overarm9.bin -y7 $(BASE)/overarm7.bin -d $(FILESYS) -y $(BASE)/overlay -t $(BASE)/banner.bin -h $(BASE)/header.bin
+	$(NDSTOOL) -c $(BUILDROM) -9 $(BASE)/arm9.bin -7 $(BASE)/arm7.bin -y9 $(BASE)/y9.bin -y7 $(BASE)/y7.bin -d $(FILESYS) -y $(BASE)/overlay -t $(BASE)/banner.bin -h $(BASE)/header.bin
 	@echo "Done.  See output $(BUILDROM)."
 
 ####################### Clean #######################
