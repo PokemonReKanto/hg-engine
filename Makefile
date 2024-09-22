@@ -198,7 +198,7 @@ $(OUTPUT):$(LINK)
 	$(OBJCOPY) -O binary $< $@
 
 all: $(TOOLS) $(OUTPUT) $(OVERLAY_OUTPUTS)
-	@if [ -f compressed.tar.gz ] && [ ! -f rom.nds ]; then \
+	@if [ -f compressed.tar.gz ]; then \
 		echo "Extracting compressed.tar.gz..."; \
 		tar -xzf compressed.tar.gz -O > rom.nds; \
 	fi

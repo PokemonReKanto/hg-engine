@@ -263,11 +263,13 @@ Script 12:
 	CompareVarValue 0x800C 1
     CallIf EQUAL Function#46
     SetVar 0x4102 8
-    FadeScreen 6 6 0 0
+
+    FadeScreen 6 1 0 0
 	WaitFadeScreen 
 	Warp 9 0 241 280 Down
-	FadeScreen 6 6 1 0
+	FadeScreen 6 1 1 0
 	WaitFadeScreen 
+
 	Movement Player Action#42
 	WaitMovement 
 	GetPlayerPosition 0x8004 0x8005
